@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+    </script>
+</head>
+
+<body>
+    <h1>Memory Nier</h1>
+    <div class="container">
+        <div class="row">
+            <div class="case col-4" id="case1">
+
+            </div>
+            <div class="case col-4" id="case2">
+
+            </div>
+            <div class="case col-4" id="case3">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="case col-4" id="case4">
+
+            </div>
+            <div class="case col-4" id="case5">
+
+            </div>
+            <div class="case col-4" id="case6">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="case col-4" id="case7">
+
+            </div>
+            <div class=" case col-4" id="case8">
+
+            </div>
+            <div class=" case col-4" id="case9">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="case col-4" id="case10">
+
+            </div>
+            <div class="case col-4" id="case11">
+
+            </div>
+            <div class="case col-4" id="case12">
+
+            </div>
+        </div>
+    </div>
+    <script>
+    var nb_clicks = 0
+var image1 = ""; var image2="";
+var case1 ="";var case2 ="";
+var img_ok= 0 ; var nb_erreurs = 0;
+var score = 0;
+var depart = false; var temps_debut= new Date().getTime();
+
+generation();
+
+var attente = setTimeout(function(){
+    for (var i=0;i<13;i++){
+        document.getElementById('img' +i).src = "images/imagecache.png";
+    }
+    depart = true;
+},3000);
+
+function generation()
+{
+var nb_alea; var nb_img="";
+var test = true; var chaine = "";
+
+for (var i=1;i<13;i++)
+{
+while (test==true)
+{
+nb_alea = Math.floor(Math.random()*12) + 1;
+if(chaine.indexOf("-" + nb_alea + "-")>-1)
+nb_alea = Math.floor(Math.random()*12) + 1;
+else
+{
+nb_img = Math.floor((nb_alea+1)/2);
+document.getElementById('case' + i).innerHTML = "<img style='cursor:pointer;' id='img" + i + "' src='images/image" + nb_img + ".png' onClick='verifier(\"img" + i + "\",\"mini" + nb_img + "\")' alt='' />";
+chaine += "-" + nb_alea + "-";
+test=false;
+}
+}
+test=true;
+}
+}
+</script>
+</body>
+</html>
