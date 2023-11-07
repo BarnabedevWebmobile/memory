@@ -58,11 +58,11 @@
             </div>
         </div>
     
-        Vous avez trois minutes,<br />soit <span class="temps_max">180 secondes :</span><br/><br /><br />
-        <span style="font-size:18px;font-weight:normal;">Votre score:<br />
-            <div id="score" style="font-size:30px;"><strong>10</strong>/10</div>
-            <br /><br />
-            <div id="temps" style="font-size:20px;"></div><br />
+        <p>Vous avez trois minutes,<br />soit <span class="temps_max">180 secondes :</span><br/><br /></p>
+        <span >Votre score:<br />
+            <div id="score"><strong>10</strong>/10</div>
+            <br />
+            <div id="temps"></div><br />
             <div class="reset_button">
                 <input type="button" class="btn btn-primary" value="Nouvelle partie" onClick="window.location.reload()"/>
             </div>
@@ -75,7 +75,8 @@
     var case1 ="";var case2 ="";
     var img_ok= 0 ; var nb_erreurs = 0;
     var score = 0;
-    var depart = false; var temps_debut= new Date().getTime();
+    var depart = false;
+    var temps_debut= new Date().getTime();
 
     generation();
 
@@ -142,7 +143,7 @@
                             nb_clics=0;
                             img_ok+=2;
                             if(img_ok==12){
-                                var dif_temps = Math.floor((new date().getTime()-temps_debut)/1000);
+                                var dif_temps = Math.floor((new Date().getTime() - temps_debut)/1000);
                                 document.getElementById("score").innerHTML= "<strong>" + score + "</score>/10";
                                 document.getElementById("temps").innerHTML= "vous avez mis<strong>" + dif_temps + "</score> secondes";
                             }
@@ -153,8 +154,12 @@
                     }
 
                 }
-                if(dif_temps>180){
+                if(dif_temps<90){
                     document.getElementById("temps").innerHTML= "Le temps est dépassé, perdu";
+                    depart=false;
+                }
+                if(nb_erreurs==10){
+                    document.getElementById("temps").innerHTML= "nombre maximum d'erreur atteint, perdu";
                     depart=false;
                 }
             }
